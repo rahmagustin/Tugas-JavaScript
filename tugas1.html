@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luas Bangun Datar</title>
+</head>
+<body>
+    <h2>Menghitung Luas Bangun Datar</h2>
+
+    <script>
+        //Deklarasi variabel
+        let panjang = 15;
+        let lebar = 7;
+        let sisi = 10;
+        let alas = 8;
+        let tinggi = 12;
+
+        //Hitung Luas
+        let LuasPersegiPanjang = panjang * lebar; //rumus luas persegi panjang
+        let LuasBujurSangkar = sisi * sisi; //rumus luas bujur sangkar
+        let LuasSegitiga = 0.5 * alas * tinggi; //rumus luas segitiga
+
+        //Menampilkan di halaman web
+        document.write("Luas Persegi Panjang : " + LuasPersegiPanjang + " cm²<br>");
+        document.write("Luas Bujur Sangkar : " + LuasBujurSangkar + " cm²<br>");
+        document.write("Luas Segitiga : " + LuasSegitiga + " cm²<br>");
+    </script>
+</body>
+</html>
