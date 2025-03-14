@@ -6,6 +6,8 @@
     <title>Luas Bangun Datar</title>
 </head>
 <body>
+    <p><strong>Nama:</strong> Rahma Dwi Agustin</p>
+    <p><strong>Asal Kampus:</strong> Politeknik Negeri Jember</p>
     <h2>Menghitung Luas Bangun Datar</h2>
 
     <script>
@@ -21,10 +23,25 @@
         let LuasBujurSangkar = sisi * sisi; //rumus luas bujur sangkar
         let LuasSegitiga = 0.5 * alas * tinggi; //rumus luas segitiga
 
-        //Menampilkan di halaman web
-        document.write("Luas Persegi Panjang : " + LuasPersegiPanjang + " cm²<br>");
-        document.write("Luas Bujur Sangkar : " + LuasBujurSangkar + " cm²<br>");
-        document.write("Luas Segitiga : " + LuasSegitiga + " cm²<br>");
+        // Persegi Panjang
+        document.write("Persegi Panjang <br>");
+        document.write("Diketahui : <br>");
+        document.write("Panjang: " + panjang + " cm<br>");
+        document.write("Lebar: " + lebar + " cm<br>");
+        document.write("Luas: " + LuasPersegiPanjang + " cm²<br><br>");
+
+        // Bujur Sangkar
+        document.write("Bujur Sangkar<br>");
+        document.write("Diketahui:<br>");
+        document.write("Sisi: " + sisi + " cm<br>");
+        document.write("Luas: " + LuasBujurSangkar + " cm²<br><br>");
+
+        // Segitiga
+        document.write("Segitiga<br>");
+        document.write("Diketahui:<br>");
+        document.write("Alas: " + alas + " cm<br>");
+        document.write("Tinggi: " + tinggi + " cm<br>");
+        document.write("Luas: " + LuasSegitiga + " cm²<br><br>");
     </script>
 </body>
 </html>
