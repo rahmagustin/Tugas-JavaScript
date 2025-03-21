@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 4 HTML</title>
+</head>
+<body>
+    <script>
+        class Pelanggan {
+            constructor(nama, nomorTelepon, kendaraanDisewa) {
+                this.nama = nama;
+                this.nomorTelepon = nomorTelepon;
+                this.kendaraanDisewa = kendaraanDisewa;
+            }
+        }
+
+        class SistemTransportasi {
+            constructor() {
+                this.pelangganList = [];
+            }
+
+            sewaKendaraan(nama, nomorTelepon, kendaraanDisewa) {
+                const pelangganBaru = new Pelanggan(nama, nomorTelepon, kendaraanDisewa);
+                this.pelangganList.push(pelangganBaru);
+                console.log(`Pelanggan ${nama} telah menyewa ${kendaraanDisewa}.`);
+            }
+
+            tampilkanPelanggan() {
+                if (this.pelangganList.length === 0) {
+                    console.log("Tidak ada pelanggan yang sedang menyewa kendaraan.");
+                } else {
+                    console.log("Daftar Pelanggan yang Menyewa Kendaraan:");
+                    this.pelangganList.forEach((pelanggan, index) => {
+                        console.log(`${index + 1}. Nama: ${pelanggan.nama}, Nomor: ${pelanggan.nomorTelepon}, Kendaraan: ${pelanggan.kendaraanDisewa}`);
+                    });
+                }
+            }
+        }
+
+        // Contoh Penggunaan
+        const sistemTransportasi = new SistemTransportasi();
+        sistemTransportasi.sewaKendaraan("Rahma", "08123456789", "Mobil");
+        sistemTransportasi.sewaKendaraan("Dwi", "08987654321", "Motor");
+        sistemTransportasi.tampilkanPelanggan();
+    </script>
+</body>
+</html>
