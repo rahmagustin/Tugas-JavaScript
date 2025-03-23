@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas 4 HTML</title>
+    <title>Sistem Manajemen Transportasi</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .pelanggan-list { margin-top: 10px; text-align: left; }
+        .pelanggan-item { padding: 8px; border: 1px solid #ccc; margin-bottom: 5px; border-radius: 5px; }
+        button { margin-top: 10px; padding: 8px; cursor: pointer; }
+    </style>
 </head>
 <body>
+
+    <div class="container">
+        <h2>Sistem Penyewaan Kendaraan</h2>
+
+        <input type="text" id="nama" placeholder="Nama Pelanggan"><br><br>
+        <input type="text" id="nomor" placeholder="Nomor Telepon"><br><br>
+
+        <select id="kendaraan">
+            <option value="" disabled selected>Pilih Kendaraan</option>
+            <option value="Mobil">Mobil</option>
+            <option value="Motor">Motor</option>
+            <option value="Bus">Bus</option>
+            <option value="Sepeda">Sepeda</option>
+        </select><br><br>
+
+        <button id="sewaBtn">Sewa Kendaraan</button>
+
+        <h3>Daftar Pelanggan yang Menyewa:</h3>
+        <div id="pelangganContainer" class="pelanggan-list"></div>
+    </div>
+
     <script>
         class Pelanggan {
             constructor(nama, nomorTelepon, kendaraanDisewa) {
@@ -23,26 +50,47 @@
             sewaKendaraan(nama, nomorTelepon, kendaraanDisewa) {
                 const pelangganBaru = new Pelanggan(nama, nomorTelepon, kendaraanDisewa);
                 this.pelangganList.push(pelangganBaru);
-                console.log(`Pelanggan ${nama} telah menyewa ${kendaraanDisewa}.`);
+                this.tampilkanPelanggan();
             }
 
             tampilkanPelanggan() {
+                const container = document.getElementById("pelangganContainer");
+                container.innerHTML = "";
+
                 if (this.pelangganList.length === 0) {
-                    console.log("Tidak ada pelanggan yang sedang menyewa kendaraan.");
+                    container.innerHTML = "<p>Tidak ada pelanggan yang menyewa kendaraan.</p>";
                 } else {
-                    console.log("Daftar Pelanggan yang Menyewa Kendaraan:");
                     this.pelangganList.forEach((pelanggan, index) => {
-                        console.log(`${index + 1}. Nama: ${pelanggan.nama}, Nomor: ${pelanggan.nomorTelepon}, Kendaraan: ${pelanggan.kendaraanDisewa}`);
+                        const pelangganDiv = document.createElement("div");
+                        pelangganDiv.classList.add("pelanggan-item");
+                        pelangganDiv.innerHTML = `
+                            <p><strong>${index + 1}. ${pelanggan.nama}</strong></p>
+                            <p>Nomor: ${pelanggan.nomorTelepon}</p>
+                            <p>Kendaraan: ${pelanggan.kendaraanDisewa}</p>
+                        `;
+                        container.appendChild(pelangganDiv);
                     });
                 }
             }
         }
 
-        // Contoh Penggunaan
         const sistemTransportasi = new SistemTransportasi();
-        sistemTransportasi.sewaKendaraan("Rahma", "08123456789", "Mobil");
-        sistemTransportasi.sewaKendaraan("Dwi", "08987654321", "Motor");
-        sistemTransportasi.tampilkanPelanggan();
+
+        document.getElementById("sewaBtn").addEventListener("click", function () {
+            const nama = document.getElementById("nama").value;
+            const nomor = document.getElementById("nomor").value;
+            const kendaraan = document.getElementById("kendaraan").value;
+
+            if (nama && nomor && kendaraan) {
+                sistemTransportasi.sewaKendaraan(nama, nomor, kendaraan);
+                document.getElementById("nama").value = "";
+                document.getElementById("nomor").value = "";
+                document.getElementById("kendaraan").value = "";
+            } else {
+                alert("Harap isi semua kolom!");
+            }
+        });
     </script>
+
 </body>
 </html>
